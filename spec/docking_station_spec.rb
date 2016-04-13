@@ -12,8 +12,10 @@ describe DockingStation do
   #end
 
   it 'has a bike' do
+    array = Array.new
     bike = Bike.new
-    expect(subject.dock(bike)).to eq bike
+    array << bike
+    expect(subject.dock(bike)).to eq array
   end
 
   describe '#release_bike' do
@@ -28,11 +30,10 @@ describe DockingStation do
       expect { subject.release_bike }.to raise_error 'No bikes available'
     end
 
-    it 'raises an error when docking a bike if a bike is already docked' do
-      subject.dock(Bike.new)
+    it 'raises an error when docking station is full' do
+      20.times { subject.dock Bike.new }
       expect { subject.dock(Bike.new) }.to raise_error 'Bike is already docked!'
     end
-
   end
 
 
