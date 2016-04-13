@@ -19,7 +19,7 @@ describe 'initialization' do
   it 'has a variable capacity' do
     docking_station = DockingStation.new(50)
     50.times { docking_station.dock Bike.new }
-    expect{ docking_station.dock Bike.new }.to raise_error 'Docking station full'
+    expect{ docking_station.dock Bike.new }.to raise_error 'Docking Station is full'
   end
 end
 
