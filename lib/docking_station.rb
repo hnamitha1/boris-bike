@@ -15,16 +15,16 @@ attr_reader :capacity, :bikes
   def release_bike
   	fail 'No bikes available' if empty?
     bikes.pop()
-       
+
   end
 
   def dock(bike)
     fail 'Docking Station is full' if full?
-    if bike.broken?
-      bikes_broken << bike
-    else  
+    # if bike.broken?
+    #   bikes_broken << bike
+    # else
       bikes << bike
-    end  
+    # end  
   end
 
   private
