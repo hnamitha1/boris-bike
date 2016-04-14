@@ -24,20 +24,22 @@ describe DockingStation do
 
 describe 'initialization' do
   it 'has a variable capacity' do
+    allow(bike).to receive(:working?).and_return(true)
     docking_station = DockingStation.new(50)
-    50.times { docking_station.dock double(:bike) }
-    expect{ docking_station.dock double(:bike) }.to raise_error 'Docking Station is full'
+    50.times { docking_station.dock bike }
+    expect{ docking_station.dock bike }.to raise_error 'Docking Station is full'
   end
 end
   let (:bike) { double :bike, broken?: false, working?: true }
   it 'has a bike' do
-    bike = double(:bike)
+    #bike = double(:bike)
     expect(subject.dock(bike)).to include  bike
   end
 
   describe '#release_bike' do
-    let(:bike) { double :bike }
+    let (:bike) { double :bike, broken?: false, working?: true }
      it 'release a bike' do
+        allow(bike).to receive(:working?).and_return(true)
         bike = double(:bike)
         subject.dock(bike)
         expect(subject.release_bike).to eq bike

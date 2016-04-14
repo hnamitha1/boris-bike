@@ -7,6 +7,6 @@ describe Van do
 	let(:broken_bike) {double :broken_bike, broken?: true}
 
 	 it "collect_broken_bikes" do
-	 	expect(subject.collect_broken_bikes).to eq broken_bike
-	 end	
+	 	expect(subject.collect_broken_bikes).to eq Array.new
+	 end
 end
