@@ -46,6 +46,9 @@ end
       subject.capacity.times { subject.dock Bike.new }
       expect { subject.dock(Bike.new) }.to raise_error 'Docking Station is full'
     end
+
+
+
   end
 
 
